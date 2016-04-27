@@ -187,3 +187,30 @@ input {
 }
 
 
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid #000;
+    &:last-child {
+      border-bottom: 1px solid #000;
+    }
+  }
+}
+
+.nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.nav li {
+    display: inline-block;
+}
+
+.pull-right {
+    float: right;
+}
