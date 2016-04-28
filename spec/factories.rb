@@ -9,4 +9,9 @@ FactoryGirl.define do
   factory :admin do
      admin true
   end
+
+  factory :micropost do
+  	content "Loren Ipsum"
+  	user
+  end
 end

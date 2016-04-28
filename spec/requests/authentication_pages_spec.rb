@@ -45,6 +45,12 @@ describe "Authentication" do
       it { should have_title('Sign in') }
       it { should have_selector('div.alert.alert-error') }
 
+
+      it { should_not have_link('Users') }
+      it { should_not have_link('Profile') }
+      it { should_not have_link('Settings') }
+      it { should_not have_link('Sign out', href: signout_path) }
+      it { should have_link('Sign in', href: signin_path) }
       describe "after visiting another page" do
         before { click_link "Home" }
         it { should_not have_selector('div.alert.alert-error') }
@@ -91,6 +97,24 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
       end
+
+
+
+        describe "in the Microposts controller" do
+
+        describe "submitting to the create action" do
+          before { post microposts_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete micropost_path(FactoryGirl.create(:micropost)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
+
+
+      
         #Користувач відвідує бажану сторінку
        describe "when attempting to visit a protected page" do
         before do
